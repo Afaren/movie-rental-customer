@@ -27,7 +27,7 @@ public class Customer {
         String result = "Rental Record for " + getName() + "\n";
         while (rentals.hasNext()) {
             Rental each = rentals.next();
-            double thisAmount = each.amountFor();
+            double thisAmount = each.getCharge();
 
 
             // add frequent renter points
