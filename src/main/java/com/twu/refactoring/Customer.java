@@ -1,7 +1,6 @@
 package com.twu.refactoring;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 public class Customer {
@@ -22,18 +21,22 @@ public class Customer {
     }
 
     public String statement() {
-        String result = "Rental Record for " + getName() + "\n";
-        result += getBody();
-        // add footer lines
-        result += "Amount owed is " + String.valueOf(getTotalAmount()) + "\n";
-        result += "You earned " + String.valueOf(getFrequentRenterPoints()) + " frequent renter points";
-        return result;
+        return head() + body() + foot();
     }
 
-    private String getBody() {
+    private String head() {
+        return "Rental Record for " + getName() + "\n";
+    }
+
+    private String body() {
         return rentalList.stream()
                          .map(rental -> "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(rental.getCharge()) + "\n")
                          .collect(Collectors.joining(""));
+    }
+
+    private String foot() {
+        return "Amount owed is " + String.valueOf(getTotalAmount()) + "\n" +
+        "You earned " + String.valueOf(getFrequentRenterPoints()) + " frequent renter points";
     }
 
     private int getFrequentRenterPoints() {
