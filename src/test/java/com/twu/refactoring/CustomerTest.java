@@ -51,12 +51,11 @@ public class CustomerTest {
         verifyOutput(dinsdale.statement(), "outputChange");
     }
 
-    /*
+    @Test
     public void testHtml() throws Exception {
-        verifyOutput("1st Output", "outputHtml", dinsdale.htmlStatement());
+        verifyOutput(dinsdale.htmlStatement(), "outputHtml");
     }
-    */
-    	
+
     protected void verifyOutput(String actualValue, String fileName) throws IOException{
         String filePath = getClass().getClassLoader().getResource(GOLD_PATH + fileName).getPath();
         BufferedReader file = new BufferedReader (new FileReader (filePath));
