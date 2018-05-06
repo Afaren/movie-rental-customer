@@ -26,8 +26,7 @@ public class Customer {
         result += getBody();
         // add footer lines
         result += "Amount owed is " + String.valueOf(getTotalAmount()) + "\n";
-        result += "You earned " + String.valueOf(getFrequentRenterPoints())
-                + " frequent renter points";
+        result += "You earned " + String.valueOf(getFrequentRenterPoints()) + " frequent renter points";
         return result;
     }
 
