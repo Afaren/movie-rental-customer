@@ -1,7 +1,7 @@
 package com.twu.refactoring;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.stream.Collectors;
 
 public class Customer {
 
@@ -21,20 +21,20 @@ public class Customer {
 	}
 
 	public String statement() {
-		int frequentRenterPoints = 0;
-		Iterator<Rental> rentals = rentalList.iterator();
 		String result = "Rental Record for " + getName() + "\n";
-		while (rentals.hasNext()) {
-			Rental each = rentals.next();
-			// show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t"
-					+ String.valueOf(amountFor(each)) + "\n";
-		}
+		result += getBody();
 		// add footer lines
 		result += "Amount owed is " + String.valueOf(getTotalAmount()) + "\n";
 		result += "You earned " + String.valueOf(getFrequentRenterPoints())
 				+ " frequent renter points";
 		return result;
+	}
+
+	private String getBody() {
+		return rentalList.stream()
+						 .map(rental -> "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amountFor(rental)) + "\n")
+						 .collect(Collectors.joining(""));
+
 	}
 
 	private int getFrequentRenterPoints() {
