@@ -22,7 +22,7 @@ public class Customer {
 
 	public String statement() {
 		String header = "Rental Record for " + getName() + "\n";
-		return header + getBody() + footer();
+		return header + body() + footer();
 	}
 
 	private String footer() {
@@ -30,7 +30,7 @@ public class Customer {
 				+ " frequent renter points";
 	}
 
-	private String getBody() {
+	private String body() {
 		return rentalList.stream()
 						 .map(rental -> "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amountFor(rental)) + "\n")
 						 .collect(Collectors.joining(""));
