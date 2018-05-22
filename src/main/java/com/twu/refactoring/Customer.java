@@ -21,13 +21,13 @@ public class Customer {
 	}
 
 	public String statement() {
-		String result = "Rental Record for " + getName() + "\n";
-		result += getBody();
-		// add footer lines
-		result += "Amount owed is " + String.valueOf(getTotalAmount()) + "\n";
-		result += "You earned " + String.valueOf(getFrequentRenterPoints())
+		String header = "Rental Record for " + getName() + "\n";
+		return header + getBody() + footer();
+	}
+
+	private String footer() {
+		return "Amount owed is " + String.valueOf(getTotalAmount()) + "\n" + "You earned " + String.valueOf(getFrequentRenterPoints())
 				+ " frequent renter points";
-		return result;
 	}
 
 	private String getBody() {
