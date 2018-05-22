@@ -136,4 +136,5 @@ gradle-app.setting
 .project
 .settings
 baseline.iml
-bin
+binmovie-rental-customer.iml
+movie-rental-customer.iml
