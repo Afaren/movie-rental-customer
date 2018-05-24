@@ -22,10 +22,10 @@ public class Customer {
     }
 
     public String statement() {
-        String result = "Rental Record for " + getName() + "\n";
+        String header = "Rental Record for " + getName() + "\n";
         String footer = "Amount owed is " + String.valueOf(getTotalAmount()) + "\n" + "You earned " + String.valueOf(
                 getFrequentRenterPoints()) + " frequent renter points";
-        return result + getBody() + footer;
+        return header + getBody() + footer;
     }
 
     private String  getBody() {
